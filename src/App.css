@@ -1,0 +1,606 @@
+/* =======================
+   색상 변수 정의
+======================= */
+:root {
+  --bg: #f5f8ff;
+  --card-bg: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #e5e7eb;
+  --primary: #2f60ff;
+  --primary-press: #244bcb;
+}
+
+/* =======================
+   공통 초기화 및 구조
+======================= */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.page {
+  min-height: 100vh;
+  display: block;
+  padding: 56px 16px;
+  justify-content: center; /* 수평 가운데 */
+  align-items: center;
+}
+.other_page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f7fa; /* 원하는 배경색 */
+  padding: 40px 16px;
+  box-sizing: border-box;
+}
+
+
+.card {
+  width: 100%;
+  max-width: 800px;
+  background: #f7faff;
+  border-radius: 24px;
+  padding: 80px 48px;
+  box-shadow: 0 2px 0 rgba(15, 23, 42, 0.02) inset;
+}
+
+.card__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.card__title {
+  font-size: 48px;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.form {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+/* =======================
+   입력 필드 스타일
+======================= */
+.field {
+  position: relative;
+  display: block;
+}
+
+.field__label {
+  position: absolute;
+  left: 18px;
+  top: -10px;
+  background: #f7faff;
+  padding: 0 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.field__input {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field__input:focus {
+  border-color: #c7d2fe;
+  box-shadow: 0 0 0 4px rgba(47, 96, 255, 0.12);
+}
+
+.field__password {
+  position: relative;
+}
+
+.field__input--password {
+  padding-right: 44px;
+}
+
+.field__toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  color: #334155;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.field__toggle:hover {
+  background: #f1f5f9;
+}
+
+/* =======================
+   버튼 스타일
+======================= */
+.btn {
+  height: 56px;
+  padding: 0 20px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.02s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+  background: var(--primary-press);
+}
+
+.btn--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* =======================
+   링크 스타일
+======================= */
+.links {
+  margin: 24px auto 0;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+}
+
+.links__item {
+  color: #475569;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.links__item:hover {
+  text-decoration: underline;
+}
+
+.links__divider {
+  color: #cbd5e1;
+}
+
+/* =======================
+   반응형 스타일
+======================= */
+@media (max-width: 640px) {
+  .card {
+    padding: 56px 20px;
+    border-radius: 20px;
+  }
+
+  .card__title {
+    font-size: 36px;
+  }
+}
+
+/* =======================
+   회원가입 전용 스타일
+======================= */
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.form__group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form__row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.form__row select,
+.form__row input {
+  flex: 1;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 15px;
+}
+/* 연도, 월, 일, 도/시/군 같은 필드 묶음 */
+.form__row--multi {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.form__row--multi > select,
+.form__row--multi > input {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+}
+
+/* 선택 박스 기본 스타일 통일 */
+select,
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  height: 44px;
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* 라벨 정렬 통일 */
+.form__group label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+/* 도/시/구군 행을 정렬할 스타일 */
+.form__row--region select {
+  flex: 1;
+  min-width: 0;
+}
+.form__row--region .form__group {
+  flex: 1;
+  min-width: 0;
+}
+
+.field {
+  position: relative;
+  display: block;
+}
+
+.field__label {
+  position: absolute;
+  left: 18px;
+  top: -10px;
+  background: #f7faff;
+  padding: 0 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.field__input {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field__toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  color: #334155;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.field__toggle:hover {
+  background: #f1f5f9;
+}
+/* 숫자 input의 스핀 버튼 제거 (크롬, 엣지 등) */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 파이어폭스용 */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.income__group {
+  position: relative;
+  flex: 1;
+}
+
+.income__group input {
+  width: 100%;
+  padding-right: 80px; /* 오른쪽 텍스트 공간 확보 */
+}
+
+.income__unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* =======================
+   기본 변수 및 공통 스타일
+======================= */
+:root {
+  --blue: #3563E9;
+  --text: #1F2937;
+  --muted: #9CA3AF;
+  --line: #E5E7EB;
+  --card: #FFFFFF;
+  --shadow: 0 8px 24px rgba(17, 24, 39, .08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Pretendard, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", Arial, "Apple SD Gothic Neo", sans-serif;
+  color: var(--text);
+  background: #f4f7f9;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px 120px;
+}
+
+
+/* =======================
+   상단바 (Navbar)
+======================= */
+.topbar {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  height: 64px;
+}
+
+.brand {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.tab {
+  position: relative;
+  font-weight: 700;
+  color: #374151;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: var(--blue);
+}
+
+.tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -14px;
+  height: 3px;
+  background: var(--blue);
+  border-radius: 2px;
+}
+
+.right-cta {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.ghost {
+  padding: 8px 14px;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+  background: #fff;
+}
+
+button.primary {
+  padding: 8px 14px;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 6px;
+}
+
+.divider {
+  height: 1px;
+  background: #E6E6E6;
+  margin: 4px 0 16px;
+}
+
+
+/* =======================
+   검색창 (SearchBox)
+======================= */
+.search-row {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 10px 14px;
+  background: #fff;
+}
+
+.search-ic {
+  opacity: 0.6;
+}
+
+.search input {
+  border: 0;
+  outline: none;
+  width: 100%;
+  font: inherit;
+}
+
+
+/* =======================
+   마이페이지
+======================= */
+.mypage {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.mypage__title {
+  font-size: 32px;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.mypage__section {
+  margin-bottom: 60px;
+}
+
+.mypage__section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.bookmark-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #f9f9f9;
+}
+/* =======================
+   사용자 정보 박스
+======================= */
+.user-info-box {
+  background: white;
+  padding: 50px 70px 50px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  
+}
+
+
+/* 기본 topbar 설정 */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 64px;
+  padding: 0 16px;
+  flex-wrap: wrap; /* 요소가 겹치지 않도록 줄바꿈 허용 */
+}
+
+/* 검색창을 오른쪽에 정렬 */
+.search-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 16px;
+  margin: 8px 0;
+}
+
+/* 버튼 줄바꿈 방지 */
+.right-cta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+

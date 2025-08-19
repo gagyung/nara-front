@@ -1,0 +1,187 @@
+.bookmark-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.bookmark-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 0;
+  list-style: none;
+}
+
+.pagination li {
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.pagination li.active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 추가 CSS */
+
+.bookmark-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.bookmark-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+  background-color: white;
+}
+
+.bookmark-card:hover {
+  transform: translateY(-4px);
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 4px;
+  padding: 6px 12px;
+  border: none;
+  background: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #333;
+  color: white;
+}
+
+/* 찜 버튼 , 카테고리*/
+
+.bookmark-card {
+  position: relative;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px #00000014;
+  width: 250px;
+  height: 150px;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e0e7ff;
+  color: #1e40af;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: gold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.remove-btn:hover {
+  transform: scale(1.2);
+}
+
+/* 수정 */
+.bookmark-list-container {
+  padding: 20px;
+}
+
+.bookmark-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: flex-start;
+}
+
+.bookmark-card {
+  flex: 1 1 calc(33.333% - 16px); /* 3개씩 맞추기 위한 설정 */
+  min-width: 250px; /* 최소 너비 설정으로 줄바꿈 조절 */
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.bookmark-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.category-badge {
+  background-color: #e0e7ff;
+  color: #1e40af;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.bookmark-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #ffd700;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pagination button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #e5e7eb;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #111827;
+  color: white;
+}
+
+
+
+.no-background {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
