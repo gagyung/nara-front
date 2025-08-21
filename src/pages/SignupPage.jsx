@@ -20,8 +20,8 @@ export default function SignupPage() {
 
   const [major, setMajor] = useState('');
   const [specialty, setSpecialty] = useState('');
-  const [incomeMin, setIncomeMin] = useState('');
-  const [incomeMax, setIncomeMax] = useState('');
+  const [income, setIncome] = useState('');
+  
 
   const navigate = useNavigate();
 
@@ -48,7 +48,7 @@ export default function SignupPage() {
   const isFormValid =
     email && password && name && birthYear && birthMonth && birthDay &&
     province && region && education && marital && jobStatus &&
-    major && specialty && incomeMin && incomeMax;
+    major && specialty && income;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -98,10 +98,8 @@ export default function SignupPage() {
             setMajor={setMajor}
             specialty={specialty}
             setSpecialty={setSpecialty}
-            incomeMin={incomeMin}
-            setIncomeMin={setIncomeMin}
-            incomeMax={incomeMax}
-            setIncomeMax={setIncomeMax}
+            income={income}
+            setIncome={setIncome}
             regions={regions}
             footer={
               <button type="submit" className="btn btn--full" disabled={!isFormValid}>

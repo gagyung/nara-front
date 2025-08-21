@@ -4,10 +4,10 @@ import PasswordField from './PasswordField';
 export default function UserInfoForm({
   email, password, name, birthYear, birthMonth, birthDay,
   province, region, education, marital, jobStatus,
-  major, specialty, incomeMin, incomeMax,
+  major, specialty, income,
   setEmail, setPassword, setName, setBirthYear, setBirthMonth, setBirthDay,
   setProvince, setRegion, setEducation, setMarital, setJobStatus,
-  setMajor, setSpecialty, setIncomeMin, setIncomeMax,
+  setMajor, setSpecialty, setIncome, 
   regions,
   mode, footer
 }) {
@@ -149,29 +149,15 @@ export default function UserInfoForm({
       {/* 연소득 */}
       <div className="form__group">
         <label>연소득</label>
-        <div className="form__row">
-          <div className="income__group">
-            <input
-              type="number"
-              className="field__input"
-              placeholder="예: 2000"
-              value={incomeMin}
-              onChange={(e) => setIncomeMin(e.target.value)}
-            />
-            <span className="income__unit">만원 이상</span>
-          </div>
-
-          <div className="income__group">
-            <input
-              type="number"
-              className="field__input"
-              placeholder="예: 3000"
-              value={incomeMax}
-              onChange={(e) => setIncomeMax(e.target.value)}
-            />
-            <span className="income__unit">만원 이하</span>
-          </div>
-        </div>
+        <select value={income} onChange={e => setIncome(e.target.value)}>
+          <option value="">선택</option>
+          <option>1000만원 이하</option>
+          <option>2000만원 이하</option>
+          <option>3000만원 이하</option>
+          <option>4000만원 이하</option>
+          <option>5000만원 이하</option>
+          <option>5000만원 초과</option>
+        </select>
       </div>
 
       {/* 버튼 영역 */}
